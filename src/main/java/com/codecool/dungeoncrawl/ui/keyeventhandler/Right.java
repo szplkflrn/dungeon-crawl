@@ -11,7 +11,7 @@ public class Right implements KeyHandler {
     @Override
     public void perform(KeyEvent event, GameMap map) {
         CellType neighbour = map.getCell(map.getPlayer().getX(), map.getPlayer().getY()).getNeighbor(1,0).getType();
-        if(code.equals(event.getCode()) && neighbour != CellType.WALL)
+        if(code.equals(event.getCode())  && neighbour != CellType.WALL && neighbour != CellType.SKELETON)
             map.getPlayer().move(1, 0);
     }
 }
