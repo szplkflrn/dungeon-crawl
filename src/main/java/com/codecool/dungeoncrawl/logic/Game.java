@@ -13,6 +13,7 @@ public class Game extends Application {
     private Set<KeyHandler> keyHandlers;
 
     public static void main(String[] args) {
+
         launch(args);
     }
 
