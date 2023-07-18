@@ -57,12 +57,17 @@ public class UI {
                     Tiles.drawTile(context, cell.getActor(), x, y);
                 } else if (cell.getItem() != null) {
                     Tiles.drawTile(context, cell.getItem(), x, y);
-
                 } else {
                     Tiles.drawTile(context, cell, x, y);
                 }
             }
         }
-        mainStage.setHealthLabelText(logic.getPlayerHealth());
+        if (logic.getMap().getPlayer().getHealth() >= 1) {
+            mainStage.setHealthLabelText(logic.getPlayerHealth());
+        } else {
+            mainStage.setHealthLabelText("0");
+            mainStage.setDeathRipText("Game OVER!!!");
+
+        }
     }
 }

@@ -10,12 +10,16 @@ public class StatusPane {
     public static final int RIGHT_PANEL_PADDING = 10;
     private GridPane ui;
     private Label healthTextLabel;
+    private Label DeathTextLabel;
+    private Label DeathRipLabel;
     private Label healthValueLabel;
 
     public StatusPane() {
         ui = new GridPane();
         healthTextLabel = new Label("Health: ");
         healthValueLabel = new Label();
+        DeathTextLabel = new Label("Game status: ");
+        DeathRipLabel = new Label("In game!");
     }
 
     public BorderPane build() {
@@ -25,6 +29,8 @@ public class StatusPane {
 
         ui.add(healthTextLabel, 0, 0);
         ui.add(healthValueLabel, 1, 0);
+        ui.add(DeathTextLabel, 0, 1);
+        ui.add(DeathRipLabel, 1, 1);
 
         BorderPane borderPane = new BorderPane();
         borderPane.setRight(ui);
@@ -33,5 +39,8 @@ public class StatusPane {
 
     public void setHealthValue(String text) {
         healthValueLabel.setText(text);
+    }
+    public void setDeathTextValue(String text) {
+        DeathRipLabel.setText(text);
     }
 }
