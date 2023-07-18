@@ -3,10 +3,10 @@ package com.codecool.dungeoncrawl.logic;
 import com.codecool.dungeoncrawl.data.Cell;
 import com.codecool.dungeoncrawl.data.CellType;
 import com.codecool.dungeoncrawl.data.GameMap;
-import com.codecool.dungeoncrawl.data.actors.Key;
+import com.codecool.dungeoncrawl.data.items.Key;
 import com.codecool.dungeoncrawl.data.actors.Player;
 import com.codecool.dungeoncrawl.data.actors.Skeleton;
-import com.codecool.dungeoncrawl.data.actors.Sword;
+import com.codecool.dungeoncrawl.data.items.Sword;
 
 import java.io.InputStream;
 import java.util.Scanner;
@@ -45,7 +45,7 @@ public class MapLoader {
                             new Sword(cell);
                             break;
                         case 's':
-                            cell.setType(CellType.SKELETON);
+                            cell.setType(CellType.FLOOR);
                             new Skeleton(cell);
                             break;
                         case '@':
