@@ -3,6 +3,7 @@ package com.codecool.dungeoncrawl.logic;
 import com.codecool.dungeoncrawl.data.Cell;
 import com.codecool.dungeoncrawl.data.CellType;
 import com.codecool.dungeoncrawl.data.GameMap;
+import com.codecool.dungeoncrawl.data.actors.Zombie;
 import com.codecool.dungeoncrawl.data.items.Door;
 import com.codecool.dungeoncrawl.data.items.Key;
 import com.codecool.dungeoncrawl.data.actors.Player;
@@ -52,6 +53,10 @@ public class MapLoader {
                         case 's':
                             cell.setType(CellType.FLOOR);
                             new Skeleton(cell);
+                            break;
+                            case 'z':
+                            cell.setType(CellType.FLOOR);
+                            new Zombie(cell);
                             break;
                         case '@':
                             cell.setType(CellType.FLOOR);
