@@ -11,10 +11,8 @@ public class Up implements KeyHandler {
 
     @Override
     public void perform(KeyEvent event, GameMap map) {
-        CellType neighbour = map.getCell(map.getPlayer().getX(), map.getPlayer().getY()).getNeighbor(0,-1).getType();
-        Actor neighbourOccupied = map.getCell(map.getPlayer().getX(), map.getPlayer().getY()).getNeighbor(0,-1).getActor();
-        if(code.equals(event.getCode()) && neighbour == CellType.FLOOR && neighbourOccupied == null)
+        if(code.equals(event.getCode())) {
             map.getPlayer().move(0, -1);
-            map.getCell(map.getPlayer().getX(), map.getPlayer().getY()).setItem(null);
+        }
     }
 }

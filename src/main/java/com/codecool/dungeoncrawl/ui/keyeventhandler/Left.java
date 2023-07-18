@@ -11,10 +11,8 @@ public class Left implements KeyHandler {
 
     @Override
     public void perform(KeyEvent event, GameMap map) {
-        CellType neighbour = map.getCell(map.getPlayer().getX(), map.getPlayer().getY()).getNeighbor(-1,0).getType();
-        Actor neighbourOccupied = map.getCell(map.getPlayer().getX(), map.getPlayer().getY()).getNeighbor(-1,0).getActor();
-        if(code.equals(event.getCode()) && neighbour == CellType.FLOOR && neighbourOccupied == null)
+        if (code.equals(event.getCode())) {
             map.getPlayer().move(-1, 0);
-        map.getCell(map.getPlayer().getX(), map.getPlayer().getY()).setItem(null);
+        }
     }
 }
