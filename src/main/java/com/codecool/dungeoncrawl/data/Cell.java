@@ -1,11 +1,14 @@
 package com.codecool.dungeoncrawl.data;
 
 import com.codecool.dungeoncrawl.data.actors.Actor;
+import com.codecool.dungeoncrawl.data.actors.Skeleton;
 import com.codecool.dungeoncrawl.data.items.Item;
 
 public class Cell implements Drawable {
     private CellType type;
     private Actor actor;
+    private Actor skeleton;
+    private Actor wizard;
     private Item item;
     private GameMap gameMap;
     private int x, y;
@@ -29,6 +32,18 @@ public class Cell implements Drawable {
         this.actor = actor;
     }
 
+    public void setSkeleton(Actor skeleton) {
+        this.skeleton = skeleton;
+    }
+
+    public void setWizard(Actor wizard) {
+        this.wizard = wizard;
+    }
+
+    public Actor getWizard() {
+        return wizard;
+    }
+
     public void setItem(Item item) {
         this.item = item;
     }
@@ -36,6 +51,11 @@ public class Cell implements Drawable {
     public Actor getActor() {
         return actor;
     }
+
+    public Actor getSkeleton() {
+        return skeleton;
+    }
+
     public Item getItem() {
         return item;
     }

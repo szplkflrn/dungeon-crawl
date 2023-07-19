@@ -6,12 +6,18 @@ import com.codecool.dungeoncrawl.data.actors.Actor;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 
+import java.util.Random;
+
 public class Right implements KeyHandler {
     public static final KeyCode code = KeyCode.RIGHT;
+    Random random = new Random();
 
     @Override
     public void perform(KeyEvent event, GameMap map) {
-        if(code.equals(event.getCode()))
+        if(code.equals(event.getCode())) {
             map.getPlayer().move(1, 0);
+            map.getSkeleton().skeletonMove(random.nextInt(2),random.nextInt(2));
+            map.getWizard().wizardMove(random.nextInt(2),random.nextInt(2));
+        }
     }
 }
