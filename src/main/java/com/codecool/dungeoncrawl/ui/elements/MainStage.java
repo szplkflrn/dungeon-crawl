@@ -28,7 +28,8 @@ public class MainStage {
 
     public void setHealthLabelText(String text) {
         this.statusPane.setHealthValue(text);
-    }public void setInventoryValueText(String text) {
+    }
+    public void setInventoryValueText(String text) {
         this.statusPane.setInventoryValue(text);
     }
     public void setDeathRipText(String text) {

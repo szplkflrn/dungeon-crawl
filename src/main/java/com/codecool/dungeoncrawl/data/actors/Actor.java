@@ -35,7 +35,11 @@ public abstract class Actor implements Drawable {
     }
 
     public void battle(Cell nextCell){
-        nextCell.getActor().setHealth(5);
+        if (inventory.contains("sword")) {
+        nextCell.getActor().setHealth(10);
+        } else {
+            nextCell.getActor().setHealth(5);
+        }
         cell.getActor().setHealth(2);
         if(nextCell.getActor().getHealth()<=0){
             nextCell.setActor(null);
