@@ -50,11 +50,8 @@ public abstract class Actor implements Drawable {
             nextCell.getActor().setHealth(5);
         }
         cell.getActor().setHealth(2);
-        if (nextCell.getActor().getHealth() <= 0) {
-            nextCell.setActor(null);
-        } else if (cell.getActor().getHealth() <= 0) {
-            cell.setActor(null);
-        }
+        isTheMonsterDead(nextCell);
+        areWeDead();
     }
 
     public void openTheDoor(Cell nextCell) {
@@ -66,6 +63,16 @@ public abstract class Actor implements Drawable {
         }
     }
 
+    public void isTheMonsterDead(Cell nextCell){
+        if (nextCell.getActor().getHealth() <= 0) {
+            nextCell.setActor(null);
+        }
+    }
+    public void areWeDead(){
+        if (cell.getActor().getHealth() <= 0) {
+            cell.setActor(null);
+        }
+    }
 
     public int getHealth() {
 
