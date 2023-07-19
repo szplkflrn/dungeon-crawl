@@ -51,6 +51,8 @@ public class StatusPane {
     }
     public void setInventoryValue(String text) {
         inventoryValueLabel.setText(text);
+    }
+
     public void setDeathTextValue(String text) {
         DeathRipLabel.setText(text);
     }
