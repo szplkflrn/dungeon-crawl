@@ -18,29 +18,46 @@ public abstract class Actor implements Drawable {
         this.cell.setActor(this);
     }
 
+    public boolean freeToMove(Cell nextcell){
+        return nextcell.getType() == CellType.FLOOR ||
+                nextcell.getType() == CellType.OPENEDDOOR;
+    }
+
     public void move(int dx, int dy) {
         Cell nextCell = cell.getNeighbor(dx, dy);
-        if(nextCell.getType() == CellType.FLOOR && nextCell.getActor() == null) {
-            if (nextCell.getItem() != cell.getItem()) {
-            inventory.add(nextCell.getItem().getTileName());
+        if (cell.getActor() != null) {
+            if (freeToMove(nextCell) && nextCell.getActor() == null) {
+                if (nextCell.getItem() != null) {
+                    inventory.add(nextCell.getItem().getTileName());
+                }
+                nextCell.setItem(null);
+                cell.setActor(null);
+                nextCell.setActor(this);
+                cell = nextCell;
+            } else if (nextCell.getActor() != null) {
+                battleTheMonsters(nextCell);
+            } else if (nextCell.getType() == CellType.CLOSEDDOOR) {
+                openTheDoor(nextCell);
             }
-            nextCell.setItem(null);
+        }
+    }
+
+    public void battleTheMonsters(Cell nextCell) {
+        nextCell.getActor().setHealth(5);
+        cell.getActor().setHealth(2);
+        if (nextCell.getActor().getHealth() <= 0) {
+            nextCell.setActor(null);
+        } else if (cell.getActor().getHealth() <= 0) {
+            cell.setActor(null);
+        }
+    }
+
+    public void openTheDoor(Cell nextCell) {
+        if (cell.getActor().inventory.contains("key")) {
+            nextCell.setType(CellType.OPENEDDOOR);
             cell.setActor(null);
             nextCell.setActor(this);
             cell = nextCell;
-        } else if (nextCell.getActor() != null){
-            battle(nextCell);
-        }
-        System.out.println(inventory);
-    }
-
-    public void battle(Cell nextCell){
-        nextCell.getActor().setHealth(5);
-        cell.getActor().setHealth(2);
-        if(nextCell.getActor().getHealth()<=0){
-            nextCell.setActor(null);
-        } else if(cell.getActor().getHealth()<=0){
-            cell.setActor(null);
         }
     }
 
