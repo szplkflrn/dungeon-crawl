@@ -56,8 +56,6 @@ public class StatusPane {
     public void setDeathTextValue(String text) {
         DeathRipLabel.setText(text);
     }
-        public void setDeathTextValue (String text){
-            DeathRipLabel.setText(text);
-        }
+
 
 }
