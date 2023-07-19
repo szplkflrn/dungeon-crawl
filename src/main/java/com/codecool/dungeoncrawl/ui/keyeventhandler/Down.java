@@ -15,8 +15,7 @@ public class Down implements KeyHandler {
     public void perform(KeyEvent event, GameMap map) {
         if (code.equals(event.getCode())) {
             map.getPlayer().move(0, 1);
-            map.getSkeleton().skeletonMove(random.nextInt(2),random.nextInt(2));
-            map.getWizard().wizardMove(random.nextInt(2),random.nextInt(2));
+            map.getWizard().wizardMove();
         }
     }
 }
