@@ -39,7 +39,7 @@ public class StatusPane {
         ui.add(DeathTextLabel, 0, 1);
         ui.add(DeathRipLabel, 1, 1);
         ui.add(inventoryTextLabel, 0, 2);
-        ui.add(inventoryValueLabel, 2, 1);
+        ui.add(inventoryValueLabel, 1, 2);
 
         BorderPane borderPane = new BorderPane();
         borderPane.setRight(ui);

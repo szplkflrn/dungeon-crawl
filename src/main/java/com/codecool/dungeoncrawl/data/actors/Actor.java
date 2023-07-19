@@ -6,6 +6,7 @@ import com.codecool.dungeoncrawl.data.Drawable;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 public abstract class Actor implements Drawable {
 
@@ -13,6 +14,7 @@ public abstract class Actor implements Drawable {
     private Cell cell;
     private int health = 10;
 
+    Random random = new Random();
     public Actor(Cell cell) {
         this.cell = cell;
         this.cell.setActor(this);
@@ -31,7 +33,24 @@ public abstract class Actor implements Drawable {
         } else if (nextCell.getActor() != null){
             battle(nextCell);
         }
-        System.out.println(inventory);
+    }
+
+    public void skeletonMove(int dx, int dy) {
+        Cell nextCell = cell.getNeighbor(dx, dy);
+        if (nextCell.getType() == CellType.FLOOR) {
+            cell.setActor(null);
+            nextCell.setActor(this);
+            cell = nextCell;
+        }
+    }
+
+    public void wizardMove(int dx, int dy) {
+        Cell nextCell = cell.getNeighbor(dx, dy);
+        if (nextCell.getType() != CellType.WALL) {
+            cell.setActor(null);
+            nextCell.setActor(this);
+            cell = nextCell;
+        }
     }
 
     public void battle(Cell nextCell){

@@ -23,9 +23,7 @@ public class UI {
 
 
     public UI(GameLogic logic, Set<KeyHandler> keyHandlers) {
-        this.canvas = new Canvas(
-                logic.getMapWidth() * Tiles.TILE_WIDTH,
-                logic.getMapHeight() * Tiles.TILE_WIDTH);
+        this.canvas = new Canvas(logic.getMapWidth() * Tiles.TILE_WIDTH, logic.getMapHeight() * Tiles.TILE_WIDTH);
         this.logic = logic;
         this.context = canvas.getGraphicsContext2D();
         this.mainStage = new MainStage(canvas);
@@ -55,6 +53,8 @@ public class UI {
                 Cell cell = logic.getCell(x, y);
                 if (cell.getActor() != null) {
                     Tiles.drawTile(context, cell.getActor(), x, y);
+                } else if (cell.getSkeleton() != null) {
+                    Tiles.drawTile(context, cell.getSkeleton(), x, y);
                 } else if (cell.getItem() != null) {
                     Tiles.drawTile(context, cell.getItem(), x, y);
                 } else {
@@ -64,7 +64,7 @@ public class UI {
         }
         if (logic.getMap().getPlayer().getHealth() >= 1) {
             mainStage.setHealthLabelText(logic.getPlayerHealth());
-          mainStage.setInventoryValueText(logic.getMap().getPlayer().getInventory().toString());
+            mainStage.setInventoryValueText(logic.getMap().getPlayer().getInventory().toString());
         } else {
             mainStage.setHealthLabelText("0");
             mainStage.setDeathRipText("Game OVER!!!");
