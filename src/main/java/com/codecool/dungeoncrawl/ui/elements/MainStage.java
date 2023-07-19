@@ -31,4 +31,8 @@ public class MainStage {
     }public void setInventoryValueText(String text) {
         this.statusPane.setInventoryValue(text);
     }
+    public void setDeathRipText(String text) {
+        this.statusPane.setDeathTextValue(text);
+    }
+
 }

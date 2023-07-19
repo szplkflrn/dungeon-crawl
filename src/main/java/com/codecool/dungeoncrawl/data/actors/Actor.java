@@ -28,13 +28,30 @@ public abstract class Actor implements Drawable {
             cell.setActor(null);
             nextCell.setActor(this);
             cell = nextCell;
+        } else if (nextCell.getActor() != null){
+            battle(nextCell);
         }
         System.out.println(inventory);
     }
 
+    public void battle(Cell nextCell){
+        nextCell.getActor().setHealth(5);
+        cell.getActor().setHealth(2);
+        if(nextCell.getActor().getHealth()<=0){
+            nextCell.setActor(null);
+        } else if(cell.getActor().getHealth()<=0){
+            cell.setActor(null);
+        }
+    }
+
+
     public int getHealth() {
 
         return health;
+    }
+
+    public int setHealth(int hit) {
+        return health = health - hit;
     }
 
     public Cell getCell() {
