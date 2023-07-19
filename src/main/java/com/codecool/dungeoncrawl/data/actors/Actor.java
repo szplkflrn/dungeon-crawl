@@ -51,14 +51,17 @@ public abstract class Actor implements Drawable {
             nextCell.setActor(this);
             cell = nextCell;
         }
+        isTheMonsterDead(nextCell);
     }
 
-    public void wizardMove(int dx, int dy) {
-        Cell nextCell = cell.getNeighbor(dx, dy);
-        if (nextCell.getType() != CellType.WALL) {
-            cell.setActor(null);
-            nextCell.setActor(this);
-            cell = nextCell;
+    public void wizardMove() {
+        Cell nextCell = cell.getNeighbor(random.nextInt(3) - 1, random.nextInt(3) - 1);
+        if (cell.getActor() != null) {
+            if (nextCell.getActor() == null && (nextCell.getX() > -1 && nextCell.getY() > -1)) {
+                cell.setActor(null);
+                nextCell.setActor(this);
+                cell = nextCell;
+            }
         }
     }
 
