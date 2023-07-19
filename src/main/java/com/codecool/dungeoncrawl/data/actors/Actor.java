@@ -20,7 +20,7 @@ public abstract class Actor implements Drawable {
             cell.setActor(null);
             nextCell.setActor(this);
             cell = nextCell;
-        } else if (nextCell.getType() == CellType.FLOOR && nextCell.getActor() != null){
+        } else if (nextCell.getActor() != null){
             battle(nextCell);
         }
     }
@@ -31,8 +31,7 @@ public abstract class Actor implements Drawable {
         if(nextCell.getActor().getHealth()<=0){
             nextCell.setActor(null);
         } else if(cell.getActor().getHealth()<=0){
-            System.out.println("Game OVER");
-
+            cell.setActor(null);
         }
     }
 
