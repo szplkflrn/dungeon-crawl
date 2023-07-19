@@ -64,10 +64,10 @@ public class UI {
         }
         if (logic.getMap().getPlayer().getHealth() >= 1) {
             mainStage.setHealthLabelText(logic.getPlayerHealth());
+          mainStage.setInventoryValueText(logic.getMap().getPlayer().getInventory().toString());
         } else {
             mainStage.setHealthLabelText("0");
             mainStage.setDeathRipText("Game OVER!!!");
-
         }
     }
 }

@@ -14,10 +14,17 @@ public class StatusPane {
     private Label DeathRipLabel;
     private Label healthValueLabel;
 
+    private Label inventoryTextLabel;
+    private Label inventoryValueLabel;
+
+
+
     public StatusPane() {
         ui = new GridPane();
         healthTextLabel = new Label("Health: ");
         healthValueLabel = new Label();
+        inventoryTextLabel = new Label("Inventory: ");
+        inventoryValueLabel = new Label("[]");
         DeathTextLabel = new Label("Game status: ");
         DeathRipLabel = new Label("In game!");
     }
@@ -31,6 +38,8 @@ public class StatusPane {
         ui.add(healthValueLabel, 1, 0);
         ui.add(DeathTextLabel, 0, 1);
         ui.add(DeathRipLabel, 1, 1);
+        ui.add(inventoryTextLabel, 0, 2);
+        ui.add(inventoryValueLabel, 2, 1);
 
         BorderPane borderPane = new BorderPane();
         borderPane.setRight(ui);
@@ -40,6 +49,8 @@ public class StatusPane {
     public void setHealthValue(String text) {
         healthValueLabel.setText(text);
     }
+    public void setInventoryValue(String text) {
+        inventoryValueLabel.setText(text);
     public void setDeathTextValue(String text) {
         DeathRipLabel.setText(text);
     }
