@@ -24,7 +24,7 @@ public class StatusPane {
         healthTextLabel = new Label("Health: ");
         healthValueLabel = new Label();
         inventoryTextLabel = new Label("Inventory: ");
-        inventoryValueLabel = new Label("[]");
+        inventoryValueLabel = new Label();
         DeathTextLabel = new Label("Game status: ");
         DeathRipLabel = new Label("In game!");
     }
@@ -56,4 +56,6 @@ public class StatusPane {
     public void setDeathTextValue(String text) {
         DeathRipLabel.setText(text);
     }
+
+
 }

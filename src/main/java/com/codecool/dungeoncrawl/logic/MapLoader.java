@@ -46,8 +46,11 @@ public class MapLoader {
                             cell.setType(CellType.FLOOR);
                             new Sword(cell);
                             break;
-                        case 'd':
-                            cell.setType(CellType.DOOR);
+                        case 'c':
+                            cell.setType(CellType.CLOSEDDOOR);
+                            break;
+                        case 'o':
+                            cell.setType(CellType.OPENEDDOOR);
                             break;
                         case 's':
                             cell.setType(CellType.FLOOR);
