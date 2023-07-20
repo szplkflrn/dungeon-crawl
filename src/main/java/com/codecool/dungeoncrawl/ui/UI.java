@@ -65,6 +65,9 @@ public class UI {
         if (logic.getMap().getPlayer().getInventory().contains("portal")) {
             logic.changeMap();
         }
+        if(logic.getMap().getPlayer().getCell().getTileName().equals("endtile")){
+            mainStage.setDeathRipText("YOU WIN!!!!!!!!!!!!!!");
+        }
         if (logic.getMap().getPlayer().getHealth() >= 1) {
             mainStage.setHealthLabelText(logic.getPlayerHealth());
             mainStage.setInventoryValueText(logic.getMap().getPlayer().getInventory().toString());

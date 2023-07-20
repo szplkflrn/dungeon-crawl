@@ -4,6 +4,7 @@ public enum CellType {
     EMPTY("empty"),
     FLOOR("floor"),
     CLOSEDDOOR("closeddoor"),
+    ENDTILE("endtile"),
     OPENEDDOOR("openeddoor"),
     WALL("wall");
 

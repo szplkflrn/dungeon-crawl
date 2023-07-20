@@ -3,6 +3,8 @@ package com.codecool.dungeoncrawl.data.actors;
 import com.codecool.dungeoncrawl.data.Cell;
 import com.codecool.dungeoncrawl.data.CellType;
 import com.codecool.dungeoncrawl.data.Drawable;
+import com.codecool.dungeoncrawl.data.items.Item;
+import com.codecool.dungeoncrawl.data.items.Wand;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,6 +14,7 @@ public abstract class Actor implements Drawable {
 
     private List<String> inventory = new ArrayList<>();
     private Cell cell;
+
     private int health = 10;
 
     Random random = new Random();
@@ -23,7 +26,8 @@ public abstract class Actor implements Drawable {
 
     public boolean freeToMove(Cell nextcell) {
         return nextcell.getType() == CellType.FLOOR ||
-                nextcell.getType() == CellType.OPENEDDOOR;
+                nextcell.getType() == CellType.OPENEDDOOR ||
+                nextcell.getType() == CellType.ENDTILE;
     }
 
     public void move(int dx, int dy) {
@@ -38,9 +42,23 @@ public abstract class Actor implements Drawable {
                 battleTheMonsters(nextCell);
             } else if (nextCell.getType() == CellType.CLOSEDDOOR) {
                 openTheDoor(nextCell);
+            } else if (cell.getActor().inventory.contains("wand")){
+                goThroughTheWalls(nextCell);
             }
         }
     }
+
+public void goThroughTheWalls(Cell nextCell){
+    cell.setActor(null);
+    nextCell.setActor(this);
+    cell = nextCell;
+    if(nextCell.getType()==CellType.ENDTILE){
+        cell.setActor(null);
+        nextCell.setActor(this);
+        cell = nextCell;
+        cell.setActor(null);
+    }
+}
 
 
     public void areThereAnyItem(Cell nextCell) {
@@ -99,7 +117,11 @@ public abstract class Actor implements Drawable {
     }
 
     public void isTheMonsterDead(Cell nextCell) {
-        if (nextCell.getActor().getHealth() <= 0) {
+
+        if (nextCell.getActor().getHealth() <= 0 && nextCell.getActor().getTileName().equals("wizard")) {
+            nextCell.setItem(new Wand(nextCell));
+            nextCell.setActor(null);
+        } else if (nextCell.getActor().getHealth() <= 0 && !nextCell.getActor().getTileName().equals("wizard")){
             nextCell.setActor(null);
         }
     }

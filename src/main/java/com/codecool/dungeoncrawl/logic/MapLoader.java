@@ -10,6 +10,7 @@ import com.codecool.dungeoncrawl.data.actors.Player;
 import com.codecool.dungeoncrawl.data.actors.Skeleton;
 import com.codecool.dungeoncrawl.data.items.Portal;
 import com.codecool.dungeoncrawl.data.items.Sword;
+import com.codecool.dungeoncrawl.data.items.Wand;
 
 import java.io.InputStream;
 import java.util.Scanner;
@@ -50,6 +51,13 @@ public class MapLoader {
                         case 'p':
                             cell.setType(CellType.FLOOR);
                             new Portal(cell);
+                            break;
+                        case 'e':
+                            cell.setType(CellType.ENDTILE);
+                            break;
+                        case 'x':
+                            cell.setType(CellType.FLOOR);
+                            new Wand(cell);
                             break;
                         case 'c':
                             cell.setType(CellType.CLOSEDDOOR);
