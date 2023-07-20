@@ -9,12 +9,12 @@ import javafx.scene.input.KeyEvent;
 import java.util.Random;
 
 public class Right implements KeyHandler {
-    public static final KeyCode code = KeyCode.RIGHT;
-    Random random = new Random();
+
 
     @Override
     public void perform(KeyEvent event, GameMap map) {
-        if(code.equals(event.getCode())) {
+        if (KeyCode.RIGHT.equals(event.getCode()) || KeyCode.D.equals(event.getCode())) {
+
             map.getPlayer().move(1, 0);
             map.getWizard().wizardMove();
         }
