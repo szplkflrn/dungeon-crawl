@@ -53,7 +53,8 @@ public abstract class Actor implements Drawable {
     public void skeletonMove() {
         Cell nextCell = cell.getNeighbor(random.nextInt(3) - 1, random.nextInt(3) - 1);
         if (cell.getActor() != null) {
-            if (nextCell.getType() == CellType.FLOOR && nextCell.getActor() == null) {
+            if (nextCell.getType() == CellType.FLOOR && nextCell.getActor() == null
+            ) {
                 cell.setActor(null);
                 nextCell.setActor(this);
                 cell = nextCell;
