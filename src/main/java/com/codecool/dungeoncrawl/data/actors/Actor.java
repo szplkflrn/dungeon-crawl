@@ -59,6 +59,9 @@ public abstract class Actor implements Drawable {
                 nextCell.setActor(this);
                 cell = nextCell;
             }
+            else{
+                skeletonMove();
+            }
         }
     }
 
