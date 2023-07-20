@@ -15,12 +15,13 @@ public abstract class Actor implements Drawable {
     private int health = 10;
 
     Random random = new Random();
+
     public Actor(Cell cell) {
         this.cell = cell;
         this.cell.setActor(this);
     }
 
-    public boolean freeToMove(Cell nextcell){
+    public boolean freeToMove(Cell nextcell) {
         return nextcell.getType() == CellType.FLOOR ||
                 nextcell.getType() == CellType.OPENEDDOOR;
     }
@@ -29,10 +30,7 @@ public abstract class Actor implements Drawable {
         Cell nextCell = cell.getNeighbor(dx, dy);
         if (cell.getActor() != null) {
             if (freeToMove(nextCell) && nextCell.getActor() == null) {
-                if (nextCell.getItem() != null) {
-                    inventory.add(nextCell.getItem().getTileName());
-                }
-                nextCell.setItem(null);
+                areThereAnyItem(nextCell);
                 cell.setActor(null);
                 nextCell.setActor(this);
                 cell = nextCell;
@@ -44,20 +42,29 @@ public abstract class Actor implements Drawable {
         }
     }
 
-    public void skeletonMove(int dx, int dy) {
-        Cell nextCell = cell.getNeighbor(dx, dy);
-        if (nextCell.getType() == CellType.FLOOR) {
-            cell.setActor(null);
-            nextCell.setActor(this);
-            cell = nextCell;
+
+    public void areThereAnyItem(Cell nextCell) {
+        if (nextCell.getItem() != null) {
+            inventory.add(nextCell.getItem().getTileName());
         }
-        isTheMonsterDead(nextCell);
+        nextCell.setItem(null);
+    }
+
+    public void skeletonMove() {
+        Cell nextCell = cell.getNeighbor(random.nextInt(3) - 1, random.nextInt(3) - 1);
+        if (cell.getActor() != null) {
+            if (nextCell.getType() == CellType.FLOOR && nextCell.getActor() == null) {
+                cell.setActor(null);
+                nextCell.setActor(this);
+                cell = nextCell;
+            }
+        }
     }
 
     public void wizardMove() {
         Cell nextCell = cell.getNeighbor(random.nextInt(3) - 1, random.nextInt(3) - 1);
         if (cell.getActor() != null) {
-            if (nextCell.getActor() == null && (nextCell.getX() > -1 && nextCell.getY() > -1)) {
+            if (nextCell.getActor() == null) {
                 cell.setActor(null);
                 nextCell.setActor(this);
                 cell = nextCell;
@@ -66,9 +73,9 @@ public abstract class Actor implements Drawable {
     }
 
 
-    public void battleTheMonsters(Cell nextCell){
+    public void battleTheMonsters(Cell nextCell) {
         if (inventory.contains("sword")) {
-        nextCell.getActor().setHealth(10);
+            nextCell.getActor().setHealth(10);
         } else {
             nextCell.getActor().setHealth(5);
         }
@@ -86,12 +93,13 @@ public abstract class Actor implements Drawable {
         }
     }
 
-    public void isTheMonsterDead(Cell nextCell){
+    public void isTheMonsterDead(Cell nextCell) {
         if (nextCell.getActor().getHealth() <= 0) {
             nextCell.setActor(null);
         }
     }
-    public void areWeDead(){
+
+    public void areWeDead() {
         if (cell.getActor().getHealth() <= 0) {
             cell.setActor(null);
         }
