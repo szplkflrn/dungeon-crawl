@@ -8,6 +8,7 @@ import com.codecool.dungeoncrawl.data.actors.Zombie;
 import com.codecool.dungeoncrawl.data.items.Key;
 import com.codecool.dungeoncrawl.data.actors.Player;
 import com.codecool.dungeoncrawl.data.actors.Skeleton;
+import com.codecool.dungeoncrawl.data.items.Portal;
 import com.codecool.dungeoncrawl.data.items.Sword;
 
 import java.io.InputStream;
@@ -45,6 +46,10 @@ public class MapLoader {
                         case 'v':
                             cell.setType(CellType.FLOOR);
                             new Sword(cell);
+                            break;
+                        case 'p':
+                            cell.setType(CellType.FLOOR);
+                            new Portal(cell);
                             break;
                         case 'c':
                             cell.setType(CellType.CLOSEDDOOR);

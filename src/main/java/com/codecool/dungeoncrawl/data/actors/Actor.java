@@ -57,7 +57,8 @@ public abstract class Actor implements Drawable {
     public void wizardMove() {
         Cell nextCell = cell.getNeighbor(random.nextInt(3) - 1, random.nextInt(3) - 1);
         if (cell.getActor() != null) {
-            if (nextCell.getActor() == null && (nextCell.getX() > -1 && nextCell.getY() > -1)) {
+            if (nextCell.getActor() == null && (nextCell.getX() > 0 && nextCell.getX() < 24 &&
+                    nextCell.getY() > 0 && nextCell.getY() < 19)) {
                 cell.setActor(null);
                 nextCell.setActor(this);
                 cell = nextCell;
