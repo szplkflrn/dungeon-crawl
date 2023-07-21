@@ -31,8 +31,8 @@ public class StatusPane {
 
     public BorderPane build() {
 
-        ui.setPrefWidth(RIGHT_PANEL_WIDTH);
-        ui.setPadding(new Insets(RIGHT_PANEL_PADDING));
+        ui.setPrefWidth(RIGHT_PANEL_WIDTH*2);
+        ui.setPadding(new Insets(RIGHT_PANEL_PADDING*2));
 
         ui.add(healthTextLabel, 0, 0);
         ui.add(healthValueLabel, 1, 0);

@@ -35,6 +35,7 @@ public class Tiles {
         tileMap.put("portal", new Tile(17, 17));
         tileMap.put("endtile", new Tile(0, 19));
         tileMap.put("wand", new Tile(17, 30));
+        tileMap.put("tree", new Tile(1, 1));
         tileMap.put("closeddoor", new Tile(6, 17));
         tileMap.put("openeddoor", new Tile(7, 17));
     }

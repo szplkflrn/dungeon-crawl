@@ -44,6 +44,8 @@ public abstract class Actor implements Drawable {
                 openTheDoor(nextCell);
             } else if (cell.getActor().inventory.contains("wand")){
                 goThroughTheWalls(nextCell);
+            } if(cell.getType()==CellType.ENDTILE){
+                cell.setActor(null);
             }
         }
     }

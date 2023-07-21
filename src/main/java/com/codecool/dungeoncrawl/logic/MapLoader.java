@@ -48,6 +48,9 @@ public class MapLoader {
                             cell.setType(CellType.FLOOR);
                             new Sword(cell);
                             break;
+                        case 't':
+                            cell.setType(CellType.TREE);
+                            break;
                         case 'p':
                             cell.setType(CellType.FLOOR);
                             new Portal(cell);
