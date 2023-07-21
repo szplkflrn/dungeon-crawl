@@ -66,14 +66,14 @@ public class UI {
             logic.changeMap();
         }
         if(logic.getMap().getPlayer().getCell().getTileName().equals("endtile")){
-            mainStage.setDeathRipText("YOU WIN!!!!!!!!!!!!!!");
+            mainStage.setDeathRipText("YOU REACHED THE CASTLE! BOSS LEVEL LOADING...");
         }
         if (logic.getMap().getPlayer().getHealth() >= 1) {
             mainStage.setHealthLabelText(logic.getPlayerHealth());
             mainStage.setInventoryValueText(logic.getMap().getPlayer().getInventory().toString());
         } else {
             mainStage.setHealthLabelText("0");
-            mainStage.setDeathRipText("Game OVER!!!");
+            mainStage.setDeathRipText("GAME OVER!");
         }
     }
 }
